@@ -15,14 +15,12 @@ import hudson.EnvVars;
 import hudson.Extension;
 import hudson.FilePath;
 import hudson.Util;
-import hudson.FilePath.FileCallable;
 import hudson.Launcher;
 import static hudson.Util.fixNull;
 import hudson.matrix.MatrixBuild;
 import hudson.matrix.MatrixRun;
 import hudson.model.*;
 import hudson.model.listeners.ItemListener;
-import hudson.remoting.VirtualChannel;
 import hudson.scm.ChangeLogParser;
 import hudson.scm.PollingResult;
 import hudson.scm.SCM;
@@ -30,7 +28,6 @@ import hudson.scm.SCMDescriptor;
 import hudson.scm.SCMRevisionState;
 import hudson.slaves.EnvironmentVariablesNodeProperty;
 import hudson.slaves.NodeProperty;
-import hudson.tasks.BuildTrigger;
 import hudson.tasks.Messages;
 import hudson.util.FormValidation;
 import hudson.util.LogTaskListener;
@@ -50,7 +47,6 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.io.StringWriter;
-import java.net.InetAddress;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -450,7 +446,7 @@ public class PerforceSCM extends SCM {
      * @param env
      */
     @Override
-    public void buildEnvVars(AbstractBuild build, Map<String, String> env) {
+    public void buildEnvVars(AbstractBuild<?,?> build, Map<String, String> env) {
         super.buildEnvVars(build, env);
         env.put("P4PORT", substituteParameters(p4Port, build));
         env.put("P4USER", substituteParameters(p4User, build));
@@ -1490,7 +1486,7 @@ public class PerforceSCM extends SCM {
         // Then terminate the build with an error
         if (!createWorkspace && creatingNewWorkspace) {
             log.println("*** Perforce client workspace '" + p4Client +"' doesn't exist.");
-            log.println("*** Please create it, or allow Jenkins to manage clients on it's own.");
+            log.println("*** Please create it, or allow Hudson/Jenkins to manage clients on it's own.");
             log.println("*** If the client name mentioned above is not what you expected, ");
             log.println("*** check your 'Client name format for slaves' advanced config option.");
             throw new AbortException("Error accessing perforce workspace.");

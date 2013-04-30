@@ -5,7 +5,7 @@
   <numExecutors>2</numExecutors>
   <mode>NORMAL</mode>
   <useSecurity>false</useSecurity>
-  <workspaceDir>${JENKINS_HOME}/workspace/${ITEM_FULLNAME}</workspaceDir>
+  <workspaceDir>${HUDSON_HOME}/workspace/${ITEM_FULLNAME}</workspaceDir>
   <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
   <markupFormatter class="hudson.markup.RawHtmlMarkupFormatter">
     <disableSyntaxHighlighting>false</disableSyntaxHighlighting>
@@ -40,7 +40,7 @@
           </default>
           <int>1</int>
           <string>HOME</string>
-          <string>${JENKINS_HOME}</string>
+          <string>${HUDSON_HOME}</string>
         </tree-map>
       </envVars>
     </hudson.slaves.EnvironmentVariablesNodeProperty>

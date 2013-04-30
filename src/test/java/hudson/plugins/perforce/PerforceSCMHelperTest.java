@@ -102,40 +102,40 @@ public class PerforceSCMHelperTest extends TestCase {
         }
 
         public void testMappingImplementation() {
-            assertEquals("/home/jenkins/workspace/trunk/type/xml/test.xml",
+            assertEquals("/home/hudson/workspace/trunk/type/xml/test.xml",
                     PerforceSCMHelper.doMapping(
                     "//Install/.../*.%%1",
-                    "/home/jenkins/workspace/.../type/%%1/*.%%1",
+                    "/home/hudson/workspace/.../type/%%1/*.%%1",
                     "//Install/trunk/test.xml"));
             assertEquals("//workspace/Install/trunk/test.xml",
                     PerforceSCMHelper.doMapping(
                     "//Install/...",
                     "//workspace/Install/...",
                     "//Install/trunk/test.xml"));
-            assertEquals("/home/jenkins/workspace/trunk/test.xml",
+            assertEquals("/home/hudson/workspace/trunk/test.xml",
                     PerforceSCMHelper.doMapping(
                     "//Install/...",
-                    "/home/jenkins/workspace/...",
+                    "/home/hudson/workspace/...",
                     "//Install/trunk/test.xml"));
-            assertEquals("/home/jenkins/workspace/test/trunk.xml",
+            assertEquals("/home/hudson/workspace/test/trunk.xml",
                     PerforceSCMHelper.doMapping(
                     "//Install/%%1/%%2.xml",
-                    "/home/jenkins/workspace/%%2/%%1.xml",
+                    "/home/hudson/workspace/%%2/%%1.xml",
                     "//Install/trunk/test.xml"));
-            assertEquals("/home/jenkins/workspace/trunk/test.xml",
+            assertEquals("/home/hudson/workspace/trunk/test.xml",
                     PerforceSCMHelper.doMapping(
                     "//Install/.../*.xml",
-                    "/home/jenkins/workspace/.../*.xml",
+                    "/home/hudson/workspace/.../*.xml",
                     "//Install/trunk/test.xml"));
-            assertEquals("/home/jenkins/workspace/trunk/SomeClass$Sub.class",
+            assertEquals("/home/hudson/workspace/trunk/SomeClass$Sub.class",
                     PerforceSCMHelper.doMapping(
                     "//Install/.../*.class",
-                    "/home/jenkins/workspace/.../*.class",
+                    "/home/hudson/workspace/.../*.class",
                     "//Install/trunk/SomeClass$Sub.class"));
-            assertEquals("/home/jenkins/workspace/trunk/SomeClass$Sub.class",
+            assertEquals("/home/hudson/workspace/trunk/SomeClass$Sub.class",
                     PerforceSCMHelper.doMapping(
                     "//Install/.../*$Sub.class",
-                    "/home/jenkins/workspace/.../*$Sub.class",
+                    "/home/hudson/workspace/.../*$Sub.class",
                     "//Install/trunk/SomeClass$Sub.class"));
         }
 
